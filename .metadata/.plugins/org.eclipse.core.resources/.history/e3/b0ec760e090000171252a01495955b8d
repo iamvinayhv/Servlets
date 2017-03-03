@@ -1,0 +1,95 @@
+package reg;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.*;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class Register
+ */
+public class Register extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    /**
+     * Default constructor. 
+     */
+    public Register() {
+        // TODO Auto-generated constructor stub
+    }
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		//doGet(request, response);
+		
+		String name=request.getParameter("name");
+		String mail=request.getParameter("mail");
+		String phone=request.getParameter("phone");
+		String gender=request.getParameter("gender");
+		
+		
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		PrintWriter out=null;
+		String qry="insert into VinayKumar.register values(?,?,?,?)";
+		try 
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/VinayKumar?user=root&password=tiger");
+			
+			pstmt.setString(1, name);
+			
+			pstmt=con.prepareStatement(qry);
+			pstmt.executeUpdate();
+			
+			out.println("<html><body>Registered sucessfully!!!<br/>Thank you</body></html>");
+			
+		} 
+		catch (ClassNotFoundException | SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		finally
+		{
+			if(con!=null)
+			{
+				try {
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+
+			if(pstmt!=null)
+			{
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+
+			if(out!=null)
+			{
+				out.close();
+			}
+			
+
+		}
+		
+		
+		
+	}
+
+
+}

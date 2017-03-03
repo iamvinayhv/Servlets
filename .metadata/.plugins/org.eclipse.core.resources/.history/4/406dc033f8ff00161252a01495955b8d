@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index Page</title>
+</head>
+<body style="background-color:gold;">
+<a href="register.html" style="color:red;">cleak here to register</a><br/><br/>
+<a href="login.html" style="color:blue;">Click here to login</a>
+<br/>
+<br/>
+
+
+<a href="tiger.jpg" ><input type="button" value="click here to see tiger"></a><br/><br/>
+
+<a style="color:green;" href="http://20thingsilearned.com">Learn Things Here</a><br/><br/>
+
+<a href="http://www.lakshmisharath.com/2010/07/10/hulikere-3/">My village</a>
+
+
+</body>
+</html>

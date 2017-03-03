@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Register</title>
+</head>
+<body>
+<form action="data" methot="post">
+Name:<input type="text" name="name"><br/>
+e-mail:<input type="text" name="mail"><br/>
+phone:<input type="number" name="phone"><br/>
+Gender:MALE<input type="radio" name="gender">FEMALE<input type="radio" name="gender">Other<input type="radio" name="gender"><br/>
+<input type="submit" name="register" value="submit" >
+
+</form>
+</body>
+</html>

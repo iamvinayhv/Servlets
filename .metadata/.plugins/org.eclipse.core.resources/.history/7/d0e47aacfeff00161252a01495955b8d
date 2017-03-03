@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Register</title>
+</head>
+<body>
+Name:<input type="text"><br/>
+e-mail:<input type="text"><br/>
+phone:<input type="number">
+Gender:MALE<input type="radio">
+</body>
+</html>

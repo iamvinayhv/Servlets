@@ -1,0 +1,24 @@
+INDEX VERSION 1.129+/home/bridgeit/vinay/JavaEclips/J2EE/.metadata/.plugins/org.eclipse.jdt.core
+4161656063.index
+4018488563.index
+3794409002.index
+3595758485.index
+3532120138.index
+3373282049.index
+1914371630.index
+2304692439.index
+2903405571.index
+1415524788.index
+3145038540.index
+1277586769.index
+2537842340.index
+65978054.index
+1156555312.index
+2607137821.index
+3910872400.index
+3244750372.index
+2171739519.index
+1310860930.index
+840958462.index
+490641406.index
+3172747766.index
