@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Register</title>
+</head>
+<body>
+<form action="reg" method="post">
+First Name:<input type="text" name="fname">
+Last Name:<input type="text" name="lname">
+E-mail:<input type="text" name="mail">
+Password:<input type="password" name="pwd">
+
+
+</form>
+</body>
+</html>

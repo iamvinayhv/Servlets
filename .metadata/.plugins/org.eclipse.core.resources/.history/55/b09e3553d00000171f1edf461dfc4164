@@ -1,0 +1,93 @@
+package com.app;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class LoginRegister
+ */
+public class LoginRegister extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public LoginRegister() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+    
+/*    static String fname;
+	static String lname;
+	static String mail;
+	static String password;
+	static String conPass;
+	static PrintWriter out=null;*/
+    
+    
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		String uri=request.getRequestURI();
+		System.out.println(uri); 
+		System.out.println( System.getProperty("catalina.home") ) ; 
+		System.out.println( System.getProperty("catalina.base") );
+		out=response.getWriter();
+		DataUpdating dataUpdating=new DataUpdating();
+		
+		if( uri.endsWith("register") )
+		{
+			fname=request.getParameter("fname");
+			lname=request.getParameter("lname");
+			mail=request.getParameter("mail");
+			password=request.getParameter("pwd");
+			conPass=request.getParameter("conpwd");
+			
+			
+			System.out.println(fname);
+			dataUpdating.update();
+
+			
+			
+			/*Connection connection=null;
+			PreparedStatement preparedStatement=null;
+			String qry="insert into LogInReg.register values(?,?,?,?)";
+			PrintWriter out=response.getWriter();
+			try 
+			{
+				Class.forName("com.mysql.jdbc.Driver");
+				connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/LogInReg?user=root&password=tiger");
+				preparedStatement=connection.prepareStatement(qry);
+				
+				preparedStatement.setString(1,fname);
+				preparedStatement.setString(2,lname);
+				preparedStatement.setString(3,mail);
+				preparedStatement.setString(4,password);
+				
+				preparedStatement.executeUpdate();
+				
+				out.println("<html><body>Registration Completed</body></html>");
+				out.println("<html><body><form action=\"login\" method=\"post\">E-mail:<input type=\"text\" name=\"mail\"><br/>Password:<input type=\"password\" name=\"pwd\"><br/><input type=\"submit\" value=\"LogIn\"></form></body></html>");
+			} 
+			catch (SQLException | ClassNotFoundException e) 
+			{
+				e.printStackTrace();
+			}*/
+		}
+		if(uri.endsWith("login"))
+		{
+			mail=request.getParameter("mail");
+			password=request.getParameter("pwd");
+			dataUpdating.authenticate();
+		}
+	}
+
+}

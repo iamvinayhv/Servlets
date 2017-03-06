@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>WELCOMEs</title>
+</head>
+<body>
+<form action="reg">
+<a href="register.html">click here to register!!!</a><br/>
+</form>
+
+<a href="login.html">click here to LogIn!!!</a>
+
+
+</body>
+</html>

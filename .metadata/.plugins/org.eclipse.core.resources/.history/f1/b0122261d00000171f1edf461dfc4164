@@ -1,0 +1,76 @@
+package com.app;
+
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class DataUpdating {
+
+	
+		LoginRegister serv=new LoginRegister();
+		Connection connection=null;
+		
+		ResultSet rs=null;
+		
+		public void update()
+		{
+			
+			String qry="insert into LogInReg.register values(?,?,?,?)";
+			try 
+			{
+				Class.forName("com.mysql.jdbc.Driver");
+				connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/LogInReg?user=root&password=tiger");
+				PreparedStatement preparedStatement=null;
+				preparedStatement=connection.prepareStatement(qry);
+				
+				preparedStatement.setString(1,LoginRegister.fname);
+				preparedStatement.setString(2,LoginRegister.lname);
+				preparedStatement.setString(3,LoginRegister.mail);
+				preparedStatement.setString(4,LoginRegister.password);
+				
+				preparedStatement.executeUpdate();
+				
+				LoginRegister.out.println("<html><body>Registration Completed</body></html>");
+			}
+			catch (SQLException | ClassNotFoundException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		 public void authenticate(String mail, String password)
+		 {
+			
+			 try 
+			 {
+				 Class.forName("com.mysql.jdbc.Driver");
+				 connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/LogInReg?user=root&password=tiger");
+				 String qry="select * from LogInReg.register where (Email = ? and Password = ?)";
+				 PreparedStatement preparedStatement=null;
+				 preparedStatement=connection.prepareStatement(qry);
+				 preparedStatement.setString(1,LoginRegister.mail);
+				 preparedStatement.setString(2,LoginRegister.password);
+				 rs=preparedStatement.executeQuery();
+				 
+				 System.out.println(rs.next());
+				 
+				 System.out.println(LoginRegister.mail);
+				 System.out.println(LoginRegister.password);
+					
+				 if(rs.next())
+					LoginRegister.out.println("<html><body>WEL COME "+rs.getString(1)+"</body></html>");
+				 else
+					LoginRegister.out.println("<html><body>Invalid E-mail OR Password vk</body></html>");
+				
+			 } 
+			 catch (SQLException | ClassNotFoundException e) 
+			 {
+				e.printStackTrace();
+			 }
+			 
+		 }
+
+}

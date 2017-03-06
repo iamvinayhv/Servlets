@@ -1,0 +1,77 @@
+package com.app;
+
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class DataUpdating {
+
+	
+		LoginRegister serv=new LoginRegister();
+		Connection connection=null;
+		
+		ResultSet rs=null;
+		
+	/*	public void update()
+		{
+			
+			String qry="insert into LogInReg.register values(?,?,?,?)";
+			try 
+			{
+				Class.forName("com.mysql.jdbc.Driver");
+				connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/LogInReg?user=root&password=tiger");
+				PreparedStatement preparedStatement=null;
+				preparedStatement=connection.prepareStatement(qry);
+				
+				preparedStatement.setString(1,LoginRegister.fname);
+				preparedStatement.setString(2,LoginRegister.lname);
+				preparedStatement.setString(3,LoginRegister.mail);
+				preparedStatement.setString(4,LoginRegister.password);
+				
+				preparedStatement.executeUpdate();
+				
+				LoginRegister.out.println("<html><body>Registration Completed</body></html>");
+			}
+			catch (SQLException | ClassNotFoundException e) 
+			{
+				e.printStackTrace();
+			}
+		}*/
+		
+		 public boolean authenticate(String mail, String password)
+		 {
+			
+			 try 
+			 {
+				 Class.forName("com.mysql.jdbc.Driver");
+				 connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/LogInReg?user=root&password=tiger");
+				 String qry="select * from LogInReg.register where Email = ? and Password = ?";
+				 PreparedStatement preparedStatement=null;
+				 preparedStatement=connection.prepareStatement(qry);
+				 preparedStatement.setString(1,mail);
+				 preparedStatement.setString(2,password);
+				 rs=preparedStatement.executeQuery();
+				 
+				 if( rs.next() ){
+					 return true;
+				}
+				else{
+					connection.close();
+					return false;
+				}
+				 
+			 } 
+			 catch (SQLException | ClassNotFoundException e) 
+			 {
+				e.printStackTrace();
+			 }
+			 finally{
+				 
+			 }
+			 return false;
+		 }
+
+}

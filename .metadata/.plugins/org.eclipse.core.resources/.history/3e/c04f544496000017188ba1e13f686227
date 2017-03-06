@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<h3>Wel Come</h1>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+<body>
+
+<form action="">
+E-mail:<input type="text" name="mail"><br/>
+Password:<input type="password" name="pwd"><br/>
+</form>
+
+</body>
+</html>
